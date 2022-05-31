@@ -57,6 +57,7 @@ jobs:
         run: | 
           git commit -m "feat:Create index.html"
           git config --global user.email "david_jan76324@hotmail.com"
+          git config  user.name "David Jan"
           git push heroku master
       
       # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
