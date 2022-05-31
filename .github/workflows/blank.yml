@@ -54,7 +54,7 @@ jobs:
         env:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
-        run: git push heroku master
+        run: git commit -m "feat: Create index.html" ; git push heroku master
       
       # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       #   with:
