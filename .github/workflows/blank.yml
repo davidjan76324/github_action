@@ -55,7 +55,7 @@ jobs:
           HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
       - name: Push to Heroku
         run: | 
-          git config user.email "david_jan76324@hotmail.com" && git config user.name "David Jan" && git add -A && git commit -m "Updated code"
+          git config user.email "david_jan76324@hotmail.com" && git config user.name "David Jan"
           git push heroku HEAD:master
       
       # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
