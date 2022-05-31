@@ -57,6 +57,7 @@ jobs:
         run: | 
           git config user.email "david_jan76324@hotmail.com" && git config user.name "David Jan"
           git push heroku HEAD:master
+          python mysite/manage.py collectstatic --noinput
       
       # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
       #   with:
