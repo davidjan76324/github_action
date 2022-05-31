@@ -33,20 +33,20 @@ jobs:
       # Runs a single command using the runners shell
       - name: Display Python version
         run: cd mysite;python manage.py check
-    heroku_git_deploy_job:
-      runs-on: ubuntu-latest
-      name: Git Deploy job- A job to deploy django app to heroku using git
-      steps:
-        - name: Checkout
-          uses: actions/checkout@v2
-        - name: Deploy django to heroku
-          uses: nyakaz73/heroku-django-deploy@v0.68 
-          with: 
-            heroku_app_name : ${{ secrets.HEROKU_APP_NAME }}
-            heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-            heroku_email_address: 'david_jan76324@hotmail.com'
-            use_git: true
-            git_branch: master
+  heroku_git_deploy_job:
+    runs-on: ubuntu-latest
+    name: Git Deploy job- A job to deploy django app to heroku using git
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Deploy django to heroku
+        uses: nyakaz73/heroku-django-deploy@v0.68 
+        with: 
+          heroku_app_name : ${{ secrets.HEROKU_APP_NAME }}
+          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+          heroku_email_address: 'david_jan76324@hotmail.com'
+          use_git: true
+          git_branch: master
       # Send eamil
       # - name: Send mail
       #   if: failure()
