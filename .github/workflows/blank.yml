@@ -16,37 +16,28 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # # This workflow contains a single job called "build"
-  # build:
-  #   # The type of runner that the job will run on
-  #   runs-on: ubuntu-latest
-
-  #   # Steps represent a sequence of tasks that will be executed as part of the job
-  #   steps:
-  #     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-  #     - uses: actions/checkout@v3
-  #     - uses: actions/setup-python@v3
-  #       with:
-  #         python-version: '3.6'
-  #         cache: 'pip'
-  #     - run: pip install -r requirements.txt
-
-  #     # Runs a single command using the runners shell
-  #     - name: Display Python version
-  #       run: cd mysite;python manage.py check
-  heroku_git_deploy_job:
+  build:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
-    name: Git Deploy job- A job to deploy django app to heroku using git
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Deploy django to heroku
-        uses: nyakaz73/heroku-django-deploy@v0.68 
-        with: 
-          heroku_app_name : ${{ secrets.HEROKU_APP_NAME }}
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.6'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
+
+      # Runs a single command using the runners shell
+      - name: Display Python version
+        run: cd mysite;python manage.py check
+      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+        with:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_email_address: 'david_jan76324@hotmail.com'
-          use_git: true
-          git_branch: main
+          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
+          heroku_email: "david_jan76324@hotmail.com"
       # Send eamil
       # - name: Send mail
       #   if: failure()
