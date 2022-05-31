@@ -15,60 +15,27 @@ on:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # # This workflow contains a single job called "build"
-  custom-deploy:
+  # This workflow contains a single job called "build"
+  build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - name: Check out repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
         with:
-          fetch-depth: 0
-      # - uses: actions/setup-python@v3
-      #   with:
-      #     python-version: '3.6'
-      #     cache: 'pip'
-      # - run: pip install -r requirements.txt
+          python-version: '3.9'
+          cache: 'pip'
+      - run: pip install -r requirements.txt
 
-      # # Runs a single command using the runners shell
-      # - name: Display Python version
-      #   run: cd mysite;python manage.py check
-      - name: Heroku login credentials
-        run: |
-          cat > ~/.netrc <<EOF
-            machine api.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_API_KEY
-            machine git.heroku.com
-              login $HEROKU_EMAIL
-              password $HEROKU_API_KEY
-          EOF
-        env:
-          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-          HEROKU_EMAIL: "david_jan76324@hotmail.com"
-      - name: Add Heroku remote
-        run: heroku git:remote --app $HEROKU_APP_NAME
-        env:
-          HEROKU_APP_NAME: ${{ secrets.HEROKU_APP_NAME }}
-      - name: Push to Heroku
-        run: | 
-          git config user.email "david_jan76324@hotmail.com" && git config user.name "David Jan"
-          git push heroku HEAD:master
-          python mysite/manage.py collectstatic --noinput
-      
-      # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-      #   with:
-      #     heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-      #     heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
-      #     heroku_email: "david_jan76324@hotmail.com"
-      #     branch: "master"
-
+      # Runs a single command using the runners shell
+      - name: Display Python version
+        run: cd mysite; python manage.py check
       # Send eamil
       # - name: Send mail
-      #   if: failure()
+      #   if: always()
       #   uses: dawidd6/action-send-mail@v2
       #   with:
       #     # mail server settings
