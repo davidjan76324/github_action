@@ -33,12 +33,25 @@ jobs:
       # # Runs a single command using the runners shell
       # - name: Display Python version
       #   run: cd mysite;python manage.py check
-      - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
-          heroku_email: "david_jan76324@hotmail.com"
-          branch: "master"
+      - name: Login to Heroku Container registry
+        env: 
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          run: heroku container:login 
+      - name: Build and push
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          run: heroku container:push -a ${{ secrets.HEROKU_APP_NAME }} web 
+      - name: Release
+        env:
+          HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+          run: heroku container:release -a ${{ secrets.HEROKU_APP_NAME }} web 
+      
+      # - uses: akhileshns/heroku-deploy@v3.12.12 # This is the action
+      #   with:
+      #     heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+      #     heroku_app_name: ${{ secrets.HEROKU_APP_NAME }} #Must be unique in Heroku
+      #     heroku_email: "david_jan76324@hotmail.com"
+      #     branch: "master"
 
       # Send eamil
       # - name: Send mail
