@@ -32,9 +32,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Display Python version
-        run: |
-        cd mysite
-        python manage.py check
+        run: cd mysite;python manage.py check
     heroku_git_deploy_job:
       runs-on: ubuntu-latest
       name: Git Deploy job- A job to deploy django app to heroku using git
