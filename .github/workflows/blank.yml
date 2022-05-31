@@ -46,7 +46,7 @@ jobs:
           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
           heroku_email_address: 'david_jan76324@hotmail.com'
           use_git: true
-          git_branch: master
+          git_branch: main
       # Send eamil
       # - name: Send mail
       #   if: failure()
