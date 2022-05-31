@@ -30,9 +30,13 @@ jobs:
           cache: 'pip'
       - run: pip install -r requirements.txt
 
+      - name: Run My python code
+        run: python test.py
+
       # Runs a single command using the runners shell
-      - name: Display Python version
+      - name: Check Django project
         run: cd mysite; python manage.py check
+      
       # Send eamil
       # - name: Send mail
       #   if: always()
