@@ -55,7 +55,7 @@ jobs:
       run: |
         cd mysite
         ls
-        screen -d -m python3 manage.py runserver 0.0.0.0:8000
+        python3 manage.py runserver 0.0.0.0:8000 &
         echo 'done runserver'
 
       # Send eamil
