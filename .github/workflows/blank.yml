@@ -53,10 +53,11 @@ jobs:
 
     - name: Deploy to my server
       run: |
+        screen
         cd mysite
         ls
-        python3 manage.py runserver 0.0.0.0:8000 &
-        echo 'done runserver'
+        python3 manage.py runserver 0.0.0.0:8000
+        screen -d
 
       # Send eamil
       # - name: Send mail
