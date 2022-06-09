@@ -55,7 +55,8 @@ jobs:
       run: |
         cd mysite
         tmux
-        sh /home/parallels/Desktop/reboot.sh
+        python3 manage.py runserver &
+        exit
       # run: |
       #   cd mysite
       #   ls
