@@ -39,7 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'django_jenkins',
+    'trips',
 )
 
 # JENKINS_TASKS = ( 
@@ -94,10 +94,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
-
-
-def testalert():
-    print("testalert")
 
 TIME_ZONE = 'UTC'
 
