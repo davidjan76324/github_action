@@ -31,7 +31,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v3
         with:
-          python-version: '3.9'
+          python-version: '3.8'
           cache: 'pip'
       - run: pip install -r requirements.txt
 
@@ -52,8 +52,9 @@ jobs:
       run: |
         cd mysite
         ls
+        kill -9 $(ps aux | grep 'manage.py runserver')
         python3 manage.py runserver &
-        
+
       # Send eamil
       # - name: Send mail
       #   if: always()
