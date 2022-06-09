@@ -43,7 +43,7 @@ jobs:
         run: cd mysite; python manage.py check
   deploy:
     runs-on: self-hosted
-    needs: build
+    #needs: build
     steps:
     - name: Download build job
       uses: actions/checkout@v3
