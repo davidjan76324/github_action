@@ -56,7 +56,7 @@ jobs:
         sleep 1
         cd mysite
         ls
-        python3 manage.py runserver &
+      # python3 manage.py runserver &
 
       # Send eamil
       # - name: Send mail
