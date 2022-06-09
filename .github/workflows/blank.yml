@@ -52,7 +52,7 @@ jobs:
       run: |
         cd mysite
         ls
-        kill -9 $(ps aux | grep 'manage.py runserver')
+        kill -9 $(ps aux | grep 'manage.py runserver' | awk '{print $2}')
         python3 manage.py runserver &
 
       # Send eamil
