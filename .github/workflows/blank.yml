@@ -33,7 +33,8 @@ jobs:
         with:
           python-version: '3.9'
           cache: 'pip'
-      - run: pip install -r requirements.txt
+      - run: |
+        pip install -r requirements.txt
 
       - name: Run My python code
         run: python test.py
@@ -41,7 +42,18 @@ jobs:
       # Runs a single command using the runners shell
       - name: Check Django project
         run: cd mysite; python manage.py check
-      
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+    - name: Download build job
+      uses: actions/checkout@v3
+        
+    - name: Deploy to my server
+      run: |
+        cd mysite
+        ls
+        python3 manage.py runserver
       # Send eamil
       # - name: Send mail
       #   if: always()
