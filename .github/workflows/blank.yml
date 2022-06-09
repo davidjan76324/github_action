@@ -52,10 +52,9 @@ jobs:
     #   run:  kill -9 $(ps aux | grep 'manage.py runserver' | awk '{print $2}') &
 
     - name: Deploy to my server
-      run: |
-        cd mysite
-        ls
-        python3 manage.py runserver --nothreading &
+      uses: appleboy/ssh-action@master
+      with:
+        script: /home/parallels/Desktop/do.sh
     
 
       # Send eamil
