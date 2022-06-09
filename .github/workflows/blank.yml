@@ -55,7 +55,7 @@ jobs:
       run: |
         cd mysite
         ls
-        sh /home/parallels/Desktop/do.sh
+        nohup python3 manage.py runserver &
     
 
       # Send eamil
