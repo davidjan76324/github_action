@@ -50,9 +50,10 @@ jobs:
 
     - name: Delete Process
       run:  kill -9 $(ps aux | grep 'manage.py runserver' | awk '{print $2}') &
-      
+
     - name: Deploy to my server
       run: |
+        sleep 1
         cd mysite
         ls
         python3 manage.py runserver &
