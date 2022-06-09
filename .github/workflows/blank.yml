@@ -54,8 +54,7 @@ jobs:
     - name: Deploy to my server
       run: |
         cd mysite
-        python3 manage.py runserver &
-        sleep 10
+        RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
       # run: |
       #   cd mysite
       #   ls
