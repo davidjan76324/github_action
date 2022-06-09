@@ -47,12 +47,14 @@ jobs:
     steps:
     - name: Download build job
       uses: actions/checkout@v3
-        
+
+    - name: Delete Process
+      run:  kill -9 $(ps aux | grep 'manage.py runserver' | awk '{print $2}') &
+      
     - name: Deploy to my server
       run: |
         cd mysite
         ls
-        kill -9 $(ps aux | grep 'manage.py runserver' | awk '{print $2}')
         python3 manage.py runserver &
 
       # Send eamil
