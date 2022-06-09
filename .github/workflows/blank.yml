@@ -52,12 +52,11 @@ jobs:
     #   run:  kill -9 $(ps aux | grep 'manage.py runserver' | awk '{print $2}') &
 
     - name: Deploy to my server
-      run: |
-        screen
-        cd mysite
-        ls
-        python3 manage.py runserver 0.0.0.0:8000
-        screen -d
+      # run: |
+      #   cd mysite
+      #   ls
+      #   python3 manage.py runserver --nothreading &
+      #   echo 'done runserver'
 
       # Send eamil
       # - name: Send mail
