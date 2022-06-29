@@ -45,8 +45,8 @@ jobs:
     runs-on: self-hosted
     needs: build_my_project
     steps:
-    - name: Download build job
-      uses: actions/checkout@v3
+    #- name: Download build job
+      #uses: actions/checkout@v3
 
     # - name: Delete Process
     #   run:  kill -9 $(ps aux | grep 'manage.py runserver' | awk '{print $2}') &
