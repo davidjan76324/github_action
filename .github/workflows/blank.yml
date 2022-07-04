@@ -20,8 +20,8 @@ on:
   # using post way to build the github action!
   # post url : https://api.github.com/repos/davidjan76324/github_action/dispatches
   # Ref: https://godleon.github.io/blog/DevOps/learn-GitHub-Action-1/
-  repository_dispatch:
-    types: [build]
+  #repository_dispatch:
+  #  types: [build]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -39,7 +39,8 @@ jobs:
           python-version: '3.8'
           cache: 'pip'
       - run: pip install -r requirements.txt
-      - run: echo name is ${{ github.event.client_payload.name }}, age is ${{ github.event.client_payload.age }}
+      # using ${{ github.event.client_payload.[key name] }} to get the post params infomation!!
+      #- run: echo name is ${{ github.event.client_payload.name }}, age is ${{ github.event.client_payload.age }}
 
       # - name: Run My python code
       #   run: python test.py
