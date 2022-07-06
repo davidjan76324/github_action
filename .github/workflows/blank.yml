@@ -75,6 +75,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
+      - name: Run Deploy File On AWS EC2
         run: |
           cd ${{ secrets.EVENT_TARGET }}
           RUNNER_TRACKING_ID="" && source bin/activate
