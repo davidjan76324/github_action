@@ -62,7 +62,7 @@ jobs:
     #     RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
     
     #--- 複製檔案到 AWS EC2
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     needs: build_my_project
     steps:
       - name: Check the files
@@ -75,7 +75,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
-      - name: Show ubuntu version
+      - name: Show OS version
         run: lsb_release -a
       # run: |
       #   cd mysite
