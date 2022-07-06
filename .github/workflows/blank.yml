@@ -49,16 +49,30 @@ jobs:
       # - name: Check Django project
       #   run: cd mysite; python manage.py check
   deploy:
-    runs-on: self-hosted
+    # --- Deploy to self-hosted
+    # runs-on: self-hosted
+    # needs: build_my_project
+    # steps:
+    # - name: Download build job
+    #   uses: actions/checkout@v3
+      
+    # - name: Deploy to my server
+    #   run: |
+    #     cd mysite
+    #     RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
+    
+    #--- Deploy to AWS EC2
     needs: build_my_project
     steps:
-    - name: Download build job
-      uses: actions/checkout@v3
-      
-    - name: Deploy to my server
-      run: |
-        cd mysite
-        RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
+      name: Deploy to EC2
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${ { secrets.EC2_SSH_KEY }}
+        REMOTE_HOST: ${ { secrets.HOST_DNS }}
+        REMOTE_USER: ${ { secrets.USERNAME }}
+        TARGET: ${ { secrets.TARGET_DIR }}
+
+
       # run: |
       #   cd mysite
       #   ls
