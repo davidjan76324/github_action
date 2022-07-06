@@ -74,7 +74,13 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-
+          EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
+        run: |
+          cd ${{ secrets.EVENT_TARGET }}
+          RUNNER_TRACKING_ID="" && source bin/activate
+          cd ${{ secrets.TARGET_DIR }}
+          cd mysite
+          RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver 0.0.0.0:8000 &
 
       # run: |
       #   cd mysite
