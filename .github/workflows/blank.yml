@@ -75,13 +75,10 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
-      - name: Show OS version
+      # 注意：這是跑在github ubuntu-18.04上的runner
+      - name: Show OS version 
         run: lsb_release -a
-      # run: |
-      #   cd mysite
-      #   ls
-      #   python3 manage.py runserver &
-      #   echo 'done runserver'
+    
 
 
       # Send eamil
