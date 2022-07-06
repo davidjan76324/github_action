@@ -77,7 +77,6 @@ jobs:
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
       - name: Run Venv files
         run: |
-          cd /home/ubuntu/Desktop/github_action_venv
           ls
       
       # run: |
