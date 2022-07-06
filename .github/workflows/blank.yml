@@ -62,7 +62,7 @@ jobs:
     #     RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
     
     #--- 複製檔案到 AWS EC2
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
     needs: build_my_project
     steps:
       - name: Check the files
