@@ -62,6 +62,7 @@ jobs:
     #     RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
     
     #--- Deploy to AWS EC2
+    runs-on: ubuntu-20.04
     needs: build_my_project
     steps:
       name: Deploy to EC2
