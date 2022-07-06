@@ -74,6 +74,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
+          SOURCE: "/home/ubuntu/Desktop/deploy/"
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
       - name: Run Venv files
         run: |
