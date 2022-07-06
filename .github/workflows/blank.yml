@@ -50,36 +50,32 @@ jobs:
       #   run: cd mysite; python manage.py check
   deploy:
     # --- Deploy to self-hosted
-    # runs-on: self-hosted
-    # needs: build_my_project
-    # steps:
-    # - name: Download build job
-    #   uses: actions/checkout@v3
-      
-    # - name: Deploy to my server
-    #   run: |
-    #     cd mysite
-    #     RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
-    
-    #--- Deploy to AWS EC2
-    runs-on: ubuntu-20.04
+    runs-on: self-hosted
     needs: build_my_project
     steps:
-      - name: Check the files
-        uses: actions/checkout@v3
-      - name: Deploy to EC2
-        uses: easingthemes/ssh-deploy@main
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
-          REMOTE_HOST: ${{ secrets.HOST_DNS }}
-          REMOTE_USER: ${{ secrets.USERNAME }}
-          TARGET: ${{ secrets.TARGET_DIR }}
-          SOURCE: "mytest/"
-          EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
-      - name: Run Venv files
-        run: |
-          pwd
-          ls
+    - name: Download build job
+      uses: actions/checkout@v3
+      
+    - name: Deploy to my server
+      run: |
+        pwd
+        #cd mysite
+        #RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver &
+    
+    #--- 複製檔案到 AWS EC2
+    # runs-on: ubuntu-20.04
+    # needs: build_my_project
+    # steps:
+    #   - name: Check the files
+    #     uses: actions/checkout@v3
+    #   - name: Deploy to EC2
+    #     uses: easingthemes/ssh-deploy@main
+    #     env:
+    #       SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+    #       REMOTE_HOST: ${{ secrets.HOST_DNS }}
+    #       REMOTE_USER: ${{ secrets.USERNAME }}
+    #       TARGET: ${{ secrets.TARGET_DIR }}
+    #       EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
       
       # run: |
       #   cd mysite
