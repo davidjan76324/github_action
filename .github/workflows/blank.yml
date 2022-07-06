@@ -78,7 +78,6 @@ jobs:
       - name: Run Venv files
         run: |
           pwd
-          cd test_self
           ls
       
       # run: |
