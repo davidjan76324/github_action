@@ -79,8 +79,7 @@ jobs:
         run: |
           cd ${{ secrets.EC2_VENV_TARGET_DIR }}
           ls
-          cd ${{ secrets.TARGET_DIR }}/mysite
-          ls
+          
 
       # run: |
       #   cd mysite
