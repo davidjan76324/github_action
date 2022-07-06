@@ -75,7 +75,11 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
+      - name: Run Venv files
+        working-directory: ${{ secrets.EC2_VENV_TARGET_DIR }}
+        run: ls
       - name: Run Deploy File On AWS EC2
+        working-directory: ${{ secrets.TARGET_DIR }}
         run: |
           ls
 
