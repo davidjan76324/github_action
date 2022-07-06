@@ -75,6 +75,7 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
+      - name: Show ubuntu version
         run: lsb_release -a
       # run: |
       #   cd mysite
