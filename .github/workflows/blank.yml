@@ -77,7 +77,8 @@ jobs:
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
       - name: Run Venv files
         run: |
-          python3 -m venv github_action_venv
+          pwd
+          RUNNER_TRACKING_ID="" && python3 -m venv github_action_venv
       
       # run: |
       #   cd mysite
