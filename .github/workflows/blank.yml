@@ -78,9 +78,9 @@ jobs:
       - name: Run Deploy File On AWS EC2
         run: |
           cd ${{ secrets.EC2_VENV_TARGET_DIR }}
-          RUNNER_TRACKING_ID="" && source bin/activate
+          ls
           cd ${{ secrets.TARGET_DIR }}/mysite
-          RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver 0.0.0.0:8000 &
+          ls
 
       # run: |
       #   cd mysite
