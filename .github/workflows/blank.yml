@@ -77,9 +77,8 @@ jobs:
           EVENT_TARGET: ${{ secrets.EC2_VENV_TARGET_DIR }}
       - name: Run Deploy File On AWS EC2
         run: |
-          cd ${{ secrets.EC2_VENV_TARGET_DIR }}
+          cd ${{ secrets.TARGET_DIR }}
           ls
-          
 
       # run: |
       #   cd mysite
