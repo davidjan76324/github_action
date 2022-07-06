@@ -78,11 +78,6 @@ jobs:
       - name: Run Venv files
         run: |
           python3 -m venv github_action_venv
-          cd github_action_venv
-          source bin/action
-          pip install "django<1.9"
-          cd ..
-          ls
       
       # run: |
       #   cd mysite
