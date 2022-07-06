@@ -79,8 +79,7 @@ jobs:
         run: |
           cd ${{ secrets.EC2_VENV_TARGET_DIR }}
           RUNNER_TRACKING_ID="" && source bin/activate
-          cd ${{ secrets.TARGET_DIR }}
-          cd mysite
+          cd ${{ secrets.TARGET_DIR }}/mysite
           RUNNER_TRACKING_ID="" && nohup python3 manage.py runserver 0.0.0.0:8000 &
 
       # run: |
